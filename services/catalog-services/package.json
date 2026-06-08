@@ -1,7 +1,7 @@
 {
- "name": "catalog-service",
+ "name": "catalog-services",
  "version": "1.0.0",
- "description": "Smart Retail Catalog Service",
+ "description": "Smart Retail Catalog Services",
  "main": "server.js",
  "scripts": {
    "start": "node server.js",
