@@ -51,3 +51,15 @@ jobs:
        cd services/catalog-services
 
        docker build -t catalog-service:${{ github.run_number }} .
+
+       docker login -u nagavaka --password Await@2020 
+
+       docker tag catalog-service:${{ github.run_number }} nagavaka/github-demo:${{ github.run_number }}
+
+       docker push nagavaka/github-demo:${{ github.run_number }}
+
+      
+
+
+
+ 
