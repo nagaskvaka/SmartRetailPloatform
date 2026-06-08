@@ -1,8 +1,8 @@
 console.log("Running Smart Retail Tests");
 
-const value = 2 + 12;
+const value = 12 + 12;
 
-if(value === 4){
+if(value === 24){
 
    console.log("Tests Passed");
 
