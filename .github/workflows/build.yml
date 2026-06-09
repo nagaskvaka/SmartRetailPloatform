@@ -52,7 +52,7 @@ jobs:
 
        docker build -t catalog-service:${{ github.run_number }} .
 
-       docker login -u nagavaka --password Await@2020 
+       docker login -u ${{ secrets.GITHUBUSERNAME }} --password ${{ secrets.GITHUBPASSWORD }} 
 
        docker tag catalog-service:${{ github.run_number }} nagavaka/github-demo:${{ github.run_number }}
 
