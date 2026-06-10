@@ -44,19 +44,42 @@ jobs:
 
        npm test
 
-   - name: Build Docker Image
 
+      # NEW: Log into Docker Hub using your GitHub Secrets
+   - name: Log in to Docker Hub
+     uses: docker/login-action@v3
+     with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+ 
+    # UPDATED: Build and Push the image to Docker Hub
+   - name: Build and Push Docker Image
      run: |
+        cd services/catalog-services
+        # Define image tags using your Docker Hub username
+        IMAGE_NAME="${{ secrets.DOCKERHUB_USERNAME }}/catalog-service"
+        VERSION_TAG="${{ github.run_number }}"
+        # Build the image with both the unique run number and 'latest' tags
+        docker build -t $IMAGE_NAME:$VERSION_TAG -t $IMAGE_NAME:latest .
+        # Push both tags to your public Docker Hub repository
+        docker push $IMAGE_NAME:$VERSION_TAG
+        docker push $IMAGE_NAME:latest
 
-       cd services/catalog-services
 
-       docker build -t catalog-service:${{ github.run_number }} .
 
-       docker login -u ${{ secrets.GITHUBUSERNAME }} --password ${{ secrets.GITHUBPASSWORD }} 
+  # - name: Build Docker Image
 
-       docker tag catalog-service:${{ github.run_number }} nagavaka/github-demo:${{ github.run_number }}
+   #  run: |
 
-       docker push nagavaka/github-demo:${{ github.run_number }}
+     #  cd services/catalog-services
+
+     #  docker build -t catalog-service:${{ github.run_number }} .
+
+     #  docker login -u ${{ secrets.GITHUBUSERNAME }} --password ${{ secrets.GITHUBPASSWORD }} 
+
+    #   docker tag catalog-service:${{ github.run_number }} nagavaka/github-demo:${{ github.run_number }}
+
+   #    docker push nagavaka/github-demo:${{ github.run_number }}
 
       
 
