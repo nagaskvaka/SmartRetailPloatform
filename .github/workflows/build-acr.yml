@@ -45,3 +45,5 @@ jobs:
 
        docker push \
        ${{ secrets.ACR_LOGIN_SERVER }}/catalog-service:${{ github.run_number }}
+
+
