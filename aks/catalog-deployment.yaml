@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: apps/v1  
 
 kind: Deployment
 
@@ -25,7 +25,7 @@ spec:
 
      - name: catalog
 
-       image: smartretailsnagavaka.azurecr.io/catalog-service:v0
+       image: smartretailsnagavaka.azurecr.io/catalog-service:5
 
        ports:
        - containerPort: 3000
