@@ -6,7 +6,7 @@ const PORT = 3000;
 
 app.get("/", (req,res)=>{
 
-   res.send("Smart Retail Running");
+   res.send("Smart Retail Running version V5");
 
 });
 
